@@ -9,6 +9,7 @@ import com.vsimpleton.wanandroid.base.BaseFragment
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.data.viewmodel.ArticleViewModel
 import com.vsimpleton.wanandroid.databinding.FragmentArticleBinding
+import com.vsimpleton.wanandroid.view.activity.WebActivity
 import com.vsimpleton.wanandroid.view.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
 
     private val mViewModel: ArticleViewModel by viewModels()
-    private val mArticleLists = mutableListOf<Article>()
+    private var mArticleLists = mutableListOf<Article>()
     private val mAdapter by lazy {
         ArticleListAdapter(requireActivity(), mArticleLists)
     }
@@ -37,6 +38,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         mViewModel.getArticleList(0)
         mViewModel.articleLiveData.observe(requireActivity(), Observer {
             if (it.errorCode == 0) {
+                mArticleLists = it.data.datas
                 mAdapter.setNewData(it.data.datas)
             }
         })
@@ -46,5 +48,9 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         val layoutManager = LinearLayoutManager(requireActivity())
         mBinding.rcyArticle.layoutManager = layoutManager
         mBinding.rcyArticle.adapter = mAdapter
+
+        mAdapter.itemClick {
+            WebActivity.start(requireActivity(), mArticleLists[it].link)
+        }
     }
 }
