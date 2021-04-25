@@ -1,4 +1,4 @@
-package com.vsimpleton.template.base
+package com.vsimpleton.wanandroid.base
 
 import androidx.lifecycle.ViewModel
 

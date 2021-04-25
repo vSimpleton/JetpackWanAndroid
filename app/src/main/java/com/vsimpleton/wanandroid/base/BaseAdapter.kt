@@ -1,6 +1,6 @@
 package com.vsimpleton.wanandroid.base
 
-import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType
  */
 
 @Suppress("UNCHECKED_CAST")
-abstract class BaseAdapter<VB : ViewBinding, T>(var mContext: Activity, var lists: ArrayList<T>) :
+abstract class BaseAdapter<VB : ViewBinding, T>(var mContext: Context, var lists: MutableList<T>) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -45,9 +45,14 @@ abstract class BaseAdapter<VB : ViewBinding, T>(var mContext: Activity, var list
         convert(holder.vb as VB, lists[position], position)
     }
 
-    abstract fun convert(v: VB, t: T, position: Int)
+    abstract fun convert(binding: VB, data: T, position: Int)
 
     override fun getItemCount(): Int = lists.size
+
+    fun setNewData(lists: MutableList<T>) {
+        this.lists.addAll(lists)
+        notifyDataSetChanged()
+    }
 
     private var itemClick: ((Int) -> Unit)? = null
     private var itemLongClick: ((Int) -> Unit)? = null

@@ -1,11 +1,10 @@
-package com.vsimpleton.template.base
+package com.vsimpleton.wanandroid.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.vsimpleton.wanandroid.observer.ConcreteObservable
@@ -22,11 +21,6 @@ open class BaseFragment<VB : ViewBinding> : Fragment(), Observer {
     private var isUIVisible = false
     var isVisibleToUser = false
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mContext = context
-    }
-
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +30,6 @@ open class BaseFragment<VB : ViewBinding> : Fragment(), Observer {
         val method = clazz.getMethod("inflate", LayoutInflater::class.java)
         mBinding = method.invoke(null, layoutInflater) as VB
 
-        mContext = context as AppCompatActivity
     }
 
     override fun onCreateView(

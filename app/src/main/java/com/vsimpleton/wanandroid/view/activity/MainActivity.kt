@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vsimpleton.wanandroid.R
 import com.vsimpleton.wanandroid.base.BaseActivity
@@ -15,7 +14,9 @@ import com.vsimpleton.wanandroid.view.fragment.AnswerFragment
 import com.vsimpleton.wanandroid.view.fragment.ArticleFragment
 import com.vsimpleton.wanandroid.view.fragment.MineFragment
 import com.vsimpleton.wanandroid.view.fragment.TypeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var mTabViews: ArrayList<View> = ArrayList()

@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET(GET_ARTICLE_LIST)
-    suspend fun getTest(@Path("page") page: Int): BaseModel<ArticleBean>
+    suspend fun getArticleList(@Path("page") page: Int): BaseModel<ArticleBean>
 
 }
