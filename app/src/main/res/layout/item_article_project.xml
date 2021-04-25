@@ -13,10 +13,11 @@
         android:text="新"
         android:textColor="@color/main_color"
         android:textSize="12sp"
+
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline"/>
+        app:layout_constraintTop_toTopOf="@id/guideline" />
 
     <TextView
         android:id="@+id/tvAuthorName"
@@ -24,8 +25,8 @@
         android:layout_height="wrap_content"
         android:text="鸿洋"
         android:textSize="12sp"
-        android:layout_marginStart="10dp"
         app:layout_goneMarginStart="0dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintStart_toEndOf="@id/tvNewTips"
         app:layout_constraintTop_toTopOf="@id/guideline" />
@@ -37,7 +38,7 @@
         android:layout_marginStart="10dp"
         android:background="@drawable/shape_main_color_2dp"
         android:padding="2dp"
-        android:text="本站发布"
+        android:text="项目"
         android:textColor="@color/main_color"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
@@ -62,26 +63,50 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="10dp" />
 
+    <ImageView
+        android:id="@+id/ivEnvelopePic"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:src="@color/_f5f5f5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthorName" />
+
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:maxLines="1"
         android:textColor="@color/main_text_color"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAuthorName"
-        tools:text="Kotlin 扩展函数之Fragment扩展（与ViewMdoel，LifecycleOwner订阅）" />
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivEnvelopePic"
+        app:layout_constraintTop_toTopOf="@id/ivEnvelopePic"
+        tools:text="TitleTitleTitle" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:maxLines="3"
+        android:textColor="@color/sub_text_color"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="内容内容内容" />
 
     <TextView
         android:id="@+id/tvChapterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/_a5a5a5"
         android:textSize="11.5sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/ivEnvelopePic"
         tools:text="原创文章" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

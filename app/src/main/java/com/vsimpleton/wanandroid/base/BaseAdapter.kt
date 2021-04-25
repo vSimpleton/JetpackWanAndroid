@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.vsimpleton.template.base.BaseViewHolder
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -50,7 +49,7 @@ abstract class BaseAdapter<VB : ViewBinding, T>(var mContext: Context, var lists
     override fun getItemCount(): Int = lists.size
 
     fun setNewData(lists: MutableList<T>) {
-        this.lists.addAll(lists)
+        this.lists = lists
         notifyDataSetChanged()
     }
 
