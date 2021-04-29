@@ -69,9 +69,55 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/main_text_color"
         android:textSize="14sp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAuthorName"
         tools:text="Kotlin 扩展函数之Fragment扩展（与ViewMdoel，LifecycleOwner订阅）" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPicLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthorName"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivEnvelopePic"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:src="@color/_f5f5f5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPicTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:maxLines="1"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/sp_14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivEnvelopePic"
+            app:layout_constraintTop_toTopOf="@id/ivEnvelopePic"
+            tools:text="TitleTitleTitle" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:maxLines="3"
+            android:textColor="@color/sub_text_color"
+            android:textSize="@dimen/sp_13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvPicTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvPicTitle"
+            tools:text="内容内容内容" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tvChapterName"
@@ -80,7 +126,9 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/_a5a5a5"
         android:textSize="11.5sp"
+        app:layout_goneMarginTop="95dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:text="原创文章" />
 

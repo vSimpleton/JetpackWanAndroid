@@ -7,8 +7,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.webkit.*
+import com.gyf.immersionbar.ImmersionBar
 import com.vsimpleton.wanandroid.base.BaseActivity
 import com.vsimpleton.wanandroid.databinding.ActivityWebBinding
+import com.vsimpleton.wanandroid.view.widget.X5WebView
 
 class WebActivity : BaseActivity<ActivityWebBinding>() {
 
@@ -25,7 +27,7 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        ImmersionBar.with(this).titleBarMarginTop(mBinding.webView).statusBarDarkFont(true).init()
         initWebView()
     }
 
@@ -40,7 +42,6 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
             domStorageEnabled = true
             loadWithOverviewMode = true
 
-            // 兼容https和http的网络链接
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             }
@@ -48,6 +49,12 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
 
         mBinding.webView.webChromeClient = WebChromeClient()
         mBinding.webView.webViewClient = WebViewClient()
+
+        mBinding.webView.setOnDrawListener(object : X5WebView.OnDrawListener {
+            override fun onDrawCallBack() {
+//                hideTop()
+            }
+        })
 
     }
 
@@ -71,6 +78,16 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
         mBinding.webView.clearHistory()
         mBinding.webView.removeAllViews()
         mBinding.webView.destroy()
+    }
+
+    private fun hideTop() {
+        val javascript =
+            "javascript:function hideTop() { " +
+                    "document.getElementsByClassName('main-header main-header visible')[0].style.display='none'" +
+                    "}"
+
+        mBinding.webView.loadUrl(javascript)
+        mBinding.webView.loadUrl("javascript:hideTop();")
     }
 
 }

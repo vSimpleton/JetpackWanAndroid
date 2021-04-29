@@ -19,7 +19,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     private val mViewModel: ArticleViewModel by viewModels()
     private var mArticleLists = mutableListOf<Article>()
     private val mAdapter by lazy {
-        ArticleListAdapter(requireActivity(), mArticleLists)
+        ArticleListAdapter(mArticleLists)
     }
 
     companion object {
@@ -39,7 +39,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         mViewModel.articleLiveData.observe(requireActivity(), Observer {
             if (it.errorCode == 0) {
                 mArticleLists = it.data.datas
-                mAdapter.setNewData(it.data.datas)
+                mAdapter.setNewInstance(it.data.datas)
             }
         })
     }
@@ -49,8 +49,11 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         mBinding.rcyArticle.layoutManager = layoutManager
         mBinding.rcyArticle.adapter = mAdapter
 
-        mAdapter.itemClick {
-            WebActivity.start(requireActivity(), mArticleLists[it].link)
+        mAdapter.setOnItemClickListener { _, _, position ->
+            WebActivity.start(
+                requireActivity(),
+                mAdapter.data[position].link
+            )
         }
     }
 }

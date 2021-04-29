@@ -69,4 +69,9 @@ dependencies {
 
     implementation("io.coil-kt:coil:1.2.0")
 
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
+    // 沉浸式状态栏和沉浸式导航栏 https://github.com/gyf-dev/ImmersionBar
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+
 }

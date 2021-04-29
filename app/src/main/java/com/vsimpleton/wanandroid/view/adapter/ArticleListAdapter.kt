@@ -1,135 +1,60 @@
 package com.vsimpleton.wanandroid.view.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.vsimpleton.wanandroid.*
+import com.vsimpleton.wanandroid.BaseVBAdapter
+import com.vsimpleton.wanandroid.BaseVBViewHolder
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.databinding.ItemArticleListBinding
-import com.vsimpleton.wanandroid.databinding.ItemArticleProjectBinding
+import com.vsimpleton.wanandroid.dp2px
 
-class ArticleListAdapter(private val context: Context, private var lists: MutableList<Article>) :
-    RecyclerView.Adapter<TypeViewHolder>() {
+class ArticleListAdapter(lists: MutableList<Article>) :
+    BaseVBAdapter<ItemArticleListBinding, Article>(lists) {
 
-    companion object {
-        private const val TYPE_ARTICLE_NORMAL = 1
-        private const val TYPE_ARTICLE_PROJECT = 2
-    }
-
-    private lateinit var mNormalBinding: ItemArticleListBinding
-    private lateinit var mProjectBinding: ItemArticleProjectBinding
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TypeViewHolder {
-        return if (viewType == TYPE_ARTICLE_NORMAL) {
-            mNormalBinding =
-                ItemArticleListBinding.inflate(LayoutInflater.from(context), parent, false)
-            NormalViewHolder(mNormalBinding.root)
-        } else {
-            mProjectBinding =
-                ItemArticleProjectBinding.inflate(LayoutInflater.from(context), parent, false)
-            ProjectViewHolder(mProjectBinding.root)
-        }
-    }
-
-    override fun onBindViewHolder(holder: TypeViewHolder, position: Int) {
-        val data = lists[position]
-        when (holder) {
-            is NormalViewHolder -> {
-                setNormalItemData(data)
-            }
-
-            is ProjectViewHolder -> {
-                setProjectItemData(data)
-            }
-        }
-        holder.itemView.setOnClickListener {
-            itemClick?.let { it(position) }
-        }
+    override fun createViewBinding(
+        inflater: LayoutInflater,
+        parent: ViewGroup
+    ): ItemArticleListBinding {
+        return ItemArticleListBinding.inflate(inflater, parent, false)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setNormalItemData(data: Article) {
-        mNormalBinding.tvTitle.text = data.title
-        mNormalBinding.tvPublishTime.text = data.niceDate
-        mNormalBinding.tvChapterName.text = "${data.superChapterName} · ${data.chapterName}"
+    override fun convert(holder: BaseVBViewHolder<ItemArticleListBinding>, item: Article) {
+        mBinding.tvPublishTime.text = item.niceDate
+        mBinding.tvChapterName.text = "${item.superChapterName} · ${item.chapterName}"
 
-        mNormalBinding.tvAuthorName.text = if (data.author.isNotEmpty()) {
-            data.author
+        mBinding.tvAuthorName.text = if (item.author.isNotEmpty()) item.author else item.shareUser
+        mBinding.tvNewTips.visibility = if (item.fresh) View.VISIBLE else View.GONE
+
+        if (item.tags.size == 0) {
+            mBinding.tvType.visibility = View.GONE
         } else {
-            data.shareUser
+            mBinding.tvType.visibility = View.VISIBLE
+            mBinding.tvType.text = item.tags[0].name
         }
-        mNormalBinding.tvNewTips.visibility = if (data.fresh) {
-            View.VISIBLE
+
+        if (item.envelopePic.isNotEmpty()) {
+            mBinding.clPicLayout.visibility = View.VISIBLE
+            mBinding.tvTitle.visibility = View.GONE
+
+            mBinding.ivEnvelopePic.load(item.envelopePic) {
+                transformations(RoundedCornersTransformation(dp2px(1.5f).toFloat()))
+            }
+            mBinding.tvPicTitle.text = item.title
+            mBinding.tvDesc.text = item.desc
+
         } else {
-            View.GONE
+            mBinding.clPicLayout.visibility = View.GONE
+            mBinding.tvTitle.visibility = View.VISIBLE
+
+            mBinding.tvTitle.text = item.title
         }
 
-        if (data.tags.size == 0) {
-            mNormalBinding.tvType.visibility = View.GONE
-        } else {
-            mNormalBinding.tvType.visibility = View.VISIBLE
-            mNormalBinding.tvType.text = data.tags[0].name
-        }
-    }
 
-    @SuppressLint("SetTextI18n")
-    private fun setProjectItemData(data: Article) {
-        mProjectBinding.tvChapterName.text =
-            "${data.superChapterName} · ${data.chapterName}"
-        mProjectBinding.tvAuthorName.text = if (data.author.isNotEmpty()) {
-            data.author
-        } else {
-            data.shareUser
-        }
-        mProjectBinding.ivEnvelopePic.load(data.envelopePic) {
-            transformations(RoundedCornersTransformation(dp2px(1.5f).toFloat()))
-        }
-        mProjectBinding.tvTitle.text = data.title
-        mProjectBinding.tvDesc.text = data.desc
-        mProjectBinding.tvPublishTime.text = data.niceDate
-
-        mProjectBinding.tvNewTips.visibility = if (data.fresh) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
-
-        if (data.tags.size == 0) {
-            mProjectBinding.tvType.visibility = View.GONE
-        } else {
-            mProjectBinding.tvType.visibility = View.VISIBLE
-            mProjectBinding.tvType.text = data.tags[0].name
-        }
-    }
-
-    override fun getItemCount(): Int = lists.size
-
-    override fun getItemViewType(position: Int): Int =
-        if (lists[position].envelopePic.isNotEmpty()) {
-            TYPE_ARTICLE_PROJECT
-        } else {
-            TYPE_ARTICLE_NORMAL
-        }
-
-    fun setNewData(lists: MutableList<Article>) {
-        this.lists = lists
-        notifyDataSetChanged()
-    }
-
-    private var itemClick: ((Int) -> Unit)? = null
-    private var itemLongClick: ((Int) -> Unit)? = null
-
-    fun itemClick(itemClick: (Int) -> Unit) {
-        this.itemClick = itemClick
-    }
-
-    fun itemLongClick(itemLongClick: (Int) -> Unit) {
-        this.itemLongClick = itemLongClick
     }
 
 }
