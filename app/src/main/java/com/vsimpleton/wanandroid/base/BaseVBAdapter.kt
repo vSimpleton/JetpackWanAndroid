@@ -9,7 +9,7 @@ abstract class BaseVBAdapter<VB : ViewBinding, T>(lists: MutableList<T>? = null)
     BaseQuickAdapter<T, BaseVBViewHolder<VB>>(0, lists) {
 
     override fun onCreateDefViewHolder(parent: ViewGroup, viewType: Int): BaseVBViewHolder<VB> {
-        val binding = createViewBinding(LayoutInflater.from(context), parent)
+        val binding = createViewBinding(LayoutInflater.from(mContext), parent)
         return BaseVBViewHolder(binding, binding.root)
     }
 

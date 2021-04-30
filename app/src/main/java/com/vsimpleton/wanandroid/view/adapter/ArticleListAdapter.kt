@@ -25,6 +25,13 @@ class ArticleListAdapter(lists: MutableList<Article>) :
     @SuppressLint("SetTextI18n")
     override fun convert(holder: BaseVBViewHolder<ItemArticleListBinding>, item: Article) {
         val mBinding = holder.binding
+
+        if (holder.layoutPosition < 5) {
+            mBinding.tvTop.visibility = View.VISIBLE
+        } else {
+            mBinding.tvTop.visibility = View.GONE
+        }
+
         mBinding.tvPublishTime.text = item.niceDate
         mBinding.tvChapterName.text = "${item.superChapterName} · ${item.chapterName}"
 

@@ -2,6 +2,7 @@ package com.vsimpleton.wanandroid.data.repository
 
 import com.vsimpleton.wanandroid.api.ApiService
 import com.vsimpleton.wanandroid.api.BASE_URL
+import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.data.bean.ArticleBean
 import com.vsimpleton.wanandroid.data.bean.BaseModel
 import com.vsimpleton.wanandroid.utils.createApiFactory
@@ -15,6 +16,10 @@ class ArticleRepository @Inject constructor() {
 
     suspend fun getArticleList(page: Int): BaseModel<ArticleBean> {
         return apiService.getArticleList(page)
+    }
+
+    suspend fun getArticleTop(): BaseModel<List<Article>> {
+        return apiService.getArticleTop()
     }
 
 }

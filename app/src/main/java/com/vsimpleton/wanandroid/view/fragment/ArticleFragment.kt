@@ -21,6 +21,8 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     private val mAdapter by lazy {
         ArticleListAdapter(mArticleLists)
     }
+    private var mPage = 0
+    private var isLoadMore = false
 
     companion object {
         fun newInstance() = ArticleFragment()
@@ -29,17 +31,29 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initTitleBar()
         initData()
         initRecyclerView()
 
     }
 
+    private fun initTitleBar() {
+        mBinding.titleBar.tvTitle.text = "首页"
+    }
+
     private fun initData() {
-        mViewModel.getArticleList(0)
+        mViewModel.getArticleList(mPage)
         mViewModel.articleLiveData.observe(requireActivity(), Observer {
             if (it.errorCode == 0) {
+                mPage++
                 mArticleLists = it.data.datas
-                mAdapter.setNewInstance(it.data.datas)
+                if (isLoadMore) {
+                    mAdapter.addData(mArticleLists)
+                    isLoadMore = false
+                    mAdapter.loadMoreComplete()
+                } else {
+                    mAdapter.setNewData(mArticleLists)
+                }
             }
         })
     }
@@ -55,5 +69,11 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
                 mAdapter.data[position].link
             )
         }
+
+        mAdapter.setOnLoadMoreListener({
+            isLoadMore = true
+            mViewModel.getArticleList(mPage)
+        }, mBinding.rcyArticle)
+
     }
 }

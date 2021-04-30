@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vsimpleton.wanandroid.base.BaseViewModel
+import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.data.bean.ArticleBean
 import com.vsimpleton.wanandroid.data.bean.BaseModel
 import com.vsimpleton.wanandroid.data.repository.ArticleRepository
@@ -22,7 +23,12 @@ class ArticleViewModel @ViewModelInject constructor(private val repository: Arti
     fun getArticleList(page: Int) {
         viewModelScope.launch {
             val result = try {
-                repository.getArticleList(page)
+                val lists = repository.getArticleList(page)
+                if (page == 0) {
+                    val topList = repository.getArticleTop()
+                    lists.data.datas.addAll(0, topList.data)
+                }
+                lists
             } catch (e: Exception) {
                 // 若发生异常，则返回默认值
                 BaseModel(-1, e.message.toString(), ArticleBean())

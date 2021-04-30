@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="鸿洋"
         android:textSize="12sp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="7dp"
         app:layout_goneMarginStart="0dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintStart_toEndOf="@id/tvNewTips"
@@ -34,7 +34,7 @@
         android:id="@+id/tvType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="7dp"
         android:background="@drawable/shape_main_color_2dp"
         android:padding="2dp"
         android:text="本站发布"
@@ -120,6 +120,20 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/tvTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="置顶"
+        android:textSize="11.5sp"
+        android:textColor="@color/_99ff0000"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintEnd_toStartOf="@id/tvChapterName"/>
+
+    <TextView
         android:id="@+id/tvChapterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,7 +141,9 @@
         android:textColor="@color/_a5a5a5"
         android:textSize="11.5sp"
         app:layout_goneMarginTop="95dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="7dp"
+        app:layout_goneMarginStart="0dp"
+        app:layout_constraintStart_toEndOf="@id/tvTop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:text="原创文章" />
