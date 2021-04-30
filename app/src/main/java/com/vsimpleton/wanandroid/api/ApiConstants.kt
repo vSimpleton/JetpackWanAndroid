@@ -7,3 +7,6 @@ const val GET_ARTICLE_LIST = "article/list/{page}/json"
 
 // 置顶文章
 const val GET_ARTICLE_TOP = "article/top/json"
+
+// 首页banner
+const val GET_BANNER = "banner/json"

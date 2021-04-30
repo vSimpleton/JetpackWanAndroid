@@ -10,7 +10,7 @@ import com.vsimpleton.wanandroid.base.BaseVBAdapter
 import com.vsimpleton.wanandroid.base.BaseVBViewHolder
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.databinding.ItemArticleListBinding
-import com.vsimpleton.wanandroid.dp2px
+import com.vsimpleton.wanandroid.utils.dp2px
 
 class ArticleListAdapter(lists: MutableList<Article>) :
     BaseVBAdapter<ItemArticleListBinding, Article>(lists) {

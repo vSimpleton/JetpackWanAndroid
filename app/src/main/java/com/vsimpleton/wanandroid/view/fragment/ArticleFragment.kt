@@ -1,20 +1,31 @@
 package com.vsimpleton.wanandroid.view.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.vsimpleton.wanandroid.R
 import com.vsimpleton.wanandroid.base.BaseFragment
 import com.vsimpleton.wanandroid.data.bean.Article
+import com.vsimpleton.wanandroid.data.bean.BannerBean
 import com.vsimpleton.wanandroid.data.viewmodel.ArticleViewModel
+import com.vsimpleton.wanandroid.databinding.BannerArticleTopBinding
 import com.vsimpleton.wanandroid.databinding.FragmentArticleBinding
+import com.vsimpleton.wanandroid.utils.dp2px
 import com.vsimpleton.wanandroid.view.activity.WebActivity
 import com.vsimpleton.wanandroid.view.adapter.ArticleListAdapter
+import com.youth.banner.adapter.BannerImageAdapter
+import com.youth.banner.holder.BannerImageHolder
+import com.youth.banner.indicator.CircleIndicator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
+class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickListener {
 
     private val mViewModel: ArticleViewModel by viewModels()
     private var mArticleLists = mutableListOf<Article>()
@@ -23,6 +34,9 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
     }
     private var mPage = 0
     private var isLoadMore = false
+    private val mBannerBinding by lazy {
+        BannerArticleTopBinding.inflate(LayoutInflater.from(requireActivity()))
+    }
 
     companion object {
         fun newInstance() = ArticleFragment()
@@ -32,17 +46,26 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         initTitleBar()
-        initData()
+        initViewModel()
         initRecyclerView()
+        initListener()
+    }
 
+    private fun initListener() {
+        mBinding.titleBar.ivLeft.setOnClickListener(this)
+        mBinding.titleBar.ivRight.setOnClickListener(this)
     }
 
     private fun initTitleBar() {
         mBinding.titleBar.tvTitle.text = "首页"
+        mBinding.titleBar.ivLeft.visibility = View.VISIBLE
+        mBinding.titleBar.ivRight.visibility = View.VISIBLE
     }
 
-    private fun initData() {
+    private fun initViewModel() {
+        mViewModel.getBannerList()
         mViewModel.getArticleList(mPage)
+
         mViewModel.articleLiveData.observe(requireActivity(), Observer {
             if (it.errorCode == 0) {
                 mPage++
@@ -56,9 +79,39 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
                 }
             }
         })
+
+        mViewModel.bannerLiveData.observe(requireActivity(), Observer {
+            if (it.errorCode == 0) {
+                mBannerBinding.banner.apply {
+                    adapter = object : BannerImageAdapter<BannerBean>(it.data) {
+                        override fun onBindView(
+                            holder: BannerImageHolder,
+                            data: BannerBean,
+                            position: Int,
+                            size: Int
+                        ) {
+                            holder.imageView.load(data.imagePath)
+                        }
+                    }
+                    addBannerLifecycleObserver(requireActivity())
+                    setIndicator(CircleIndicator(requireActivity()))
+                }
+            }
+        })
+
+    }
+
+    private fun initBannerView(): View {
+        val params = RecyclerView.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            dp2px(220f)
+        )
+        mBannerBinding.root.layoutParams = params
+        return mBannerBinding.root
     }
 
     private fun initRecyclerView() {
+        mAdapter.addHeaderView(initBannerView())
         val layoutManager = LinearLayoutManager(requireActivity())
         mBinding.rcyArticle.layoutManager = layoutManager
         mBinding.rcyArticle.adapter = mAdapter
@@ -75,5 +128,14 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>() {
             mViewModel.getArticleList(mPage)
         }, mBinding.rcyArticle)
 
+    }
+
+    override fun onClick(v: View) {
+        when (v) {
+            mBinding.titleBar.ivLeft -> {
+            }
+            mBinding.titleBar.ivRight -> {
+            }
+        }
     }
 }

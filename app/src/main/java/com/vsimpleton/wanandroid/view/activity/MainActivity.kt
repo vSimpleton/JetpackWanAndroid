@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.tabs.TabLayoutMediator
+import com.gyf.immersionbar.ImmersionBar
 import com.vsimpleton.wanandroid.R
 import com.vsimpleton.wanandroid.base.BaseActivity
 import com.vsimpleton.wanandroid.databinding.ActivityMainBinding
@@ -23,7 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        ImmersionBar.with(this).titleBarMarginTop(mBinding.viewPager).statusBarDarkFont(true).init()
         initViewPager()
     }
 

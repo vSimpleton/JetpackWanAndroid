@@ -2,6 +2,7 @@ package com.vsimpleton.wanandroid.api
 
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.data.bean.ArticleBean
+import com.vsimpleton.wanandroid.data.bean.BannerBean
 import com.vsimpleton.wanandroid.data.bean.BaseModel
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,6 +13,9 @@ interface ApiService {
     suspend fun getArticleList(@Path("page") page: Int): BaseModel<ArticleBean>
 
     @GET(GET_ARTICLE_TOP)
-    suspend fun getArticleTop(): BaseModel<List<Article>>
+    suspend fun getArticleTop(): BaseModel<MutableList<Article>>
+
+    @GET(GET_BANNER)
+    suspend fun getBanner(): BaseModel<MutableList<BannerBean>>
 
 }

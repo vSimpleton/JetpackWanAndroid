@@ -4,6 +4,7 @@ import com.vsimpleton.wanandroid.api.ApiService
 import com.vsimpleton.wanandroid.api.BASE_URL
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.data.bean.ArticleBean
+import com.vsimpleton.wanandroid.data.bean.BannerBean
 import com.vsimpleton.wanandroid.data.bean.BaseModel
 import com.vsimpleton.wanandroid.utils.createApiFactory
 import javax.inject.Inject
@@ -18,8 +19,12 @@ class ArticleRepository @Inject constructor() {
         return apiService.getArticleList(page)
     }
 
-    suspend fun getArticleTop(): BaseModel<List<Article>> {
+    suspend fun getArticleTop(): BaseModel<MutableList<Article>> {
         return apiService.getArticleTop()
+    }
+
+    suspend fun getBannerList(): BaseModel<MutableList<BannerBean>> {
+        return apiService.getBanner()
     }
 
 }

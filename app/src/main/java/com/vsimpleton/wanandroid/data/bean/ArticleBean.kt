@@ -2,7 +2,12 @@ package com.vsimpleton.wanandroid.data.bean
 
 data class ArticleBean(
     val curPage: Int = 0,
-    val datas: MutableList<Article> = mutableListOf()
+    val datas: MutableList<Article> = mutableListOf(),
+    val offset: Int = 0,
+    val over: Boolean = false,
+    val pageCount: Int = 0,
+    val size: Int = 0,
+    val total: Int = 0
 )
 
 data class Article(

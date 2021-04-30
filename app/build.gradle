@@ -67,11 +67,10 @@ dependencies {
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 
+    // View
     implementation("io.coil-kt:coil:1.2.0")
-
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-
-    // 沉浸式状态栏和沉浸式导航栏 https://github.com/gyf-dev/ImmersionBar
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation 'com.youth.banner:banner:2.1.0'
 
 }
