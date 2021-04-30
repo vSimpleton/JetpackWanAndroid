@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid
+package com.vsimpleton.wanandroid.base
 
 import android.view.View
 import androidx.viewbinding.ViewBinding

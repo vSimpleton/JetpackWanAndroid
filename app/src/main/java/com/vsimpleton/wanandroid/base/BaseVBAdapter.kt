@@ -1,20 +1,16 @@
-package com.vsimpleton.wanandroid
+package com.vsimpleton.wanandroid.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
-import java.lang.reflect.ParameterizedType
 
-@Suppress("UNCHECKED_CAST")
 abstract class BaseVBAdapter<VB : ViewBinding, T>(lists: MutableList<T>? = null) :
     BaseQuickAdapter<T, BaseVBViewHolder<VB>>(0, lists) {
 
-    lateinit var mBinding: VB
-
     override fun onCreateDefViewHolder(parent: ViewGroup, viewType: Int): BaseVBViewHolder<VB> {
-        mBinding = createViewBinding(LayoutInflater.from(context), parent)
-        return BaseVBViewHolder(mBinding, mBinding.root)
+        val binding = createViewBinding(LayoutInflater.from(context), parent)
+        return BaseVBViewHolder(binding, binding.root)
     }
 
     abstract fun createViewBinding(inflater: LayoutInflater, parent: ViewGroup): VB

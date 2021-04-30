@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.vsimpleton.wanandroid.BaseVBAdapter
-import com.vsimpleton.wanandroid.BaseVBViewHolder
+import com.vsimpleton.wanandroid.base.BaseVBAdapter
+import com.vsimpleton.wanandroid.base.BaseVBViewHolder
 import com.vsimpleton.wanandroid.data.bean.Article
 import com.vsimpleton.wanandroid.databinding.ItemArticleListBinding
 import com.vsimpleton.wanandroid.dp2px
@@ -24,6 +24,7 @@ class ArticleListAdapter(lists: MutableList<Article>) :
 
     @SuppressLint("SetTextI18n")
     override fun convert(holder: BaseVBViewHolder<ItemArticleListBinding>, item: Article) {
+        val mBinding = holder.binding
         mBinding.tvPublishTime.text = item.niceDate
         mBinding.tvChapterName.text = "${item.superChapterName} · ${item.chapterName}"
 
@@ -53,7 +54,6 @@ class ArticleListAdapter(lists: MutableList<Article>) :
 
             mBinding.tvTitle.text = item.title
         }
-
 
     }
 
