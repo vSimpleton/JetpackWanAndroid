@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.data.bean
+package com.vsimpleton.wanandroid.bean
 
 import com.google.gson.annotations.SerializedName
 

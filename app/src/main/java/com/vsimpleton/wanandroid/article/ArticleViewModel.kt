@@ -1,15 +1,13 @@
-package com.vsimpleton.wanandroid.data.viewmodel
+package com.vsimpleton.wanandroid.article
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vsimpleton.wanandroid.base.BaseViewModel
-import com.vsimpleton.wanandroid.data.bean.Article
-import com.vsimpleton.wanandroid.data.bean.ArticleBean
-import com.vsimpleton.wanandroid.data.bean.BannerBean
-import com.vsimpleton.wanandroid.data.bean.BaseModel
-import com.vsimpleton.wanandroid.data.repository.ArticleRepository
+import com.vsimpleton.wanandroid.bean.ArticleBean
+import com.vsimpleton.wanandroid.bean.BannerBean
+import com.vsimpleton.wanandroid.bean.BaseModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

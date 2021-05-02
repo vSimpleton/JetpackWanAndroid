@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vsimpleton.wanandroid.base.BaseViewModel
-import com.vsimpleton.wanandroid.data.bean.ArticleBean
-import com.vsimpleton.wanandroid.data.bean.BaseModel
+import com.vsimpleton.wanandroid.bean.ArticleBean
+import com.vsimpleton.wanandroid.bean.BaseModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 

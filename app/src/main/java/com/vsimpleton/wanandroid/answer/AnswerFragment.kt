@@ -6,10 +6,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vsimpleton.wanandroid.base.BaseFragment
-import com.vsimpleton.wanandroid.data.bean.Article
+import com.vsimpleton.wanandroid.bean.Article
 import com.vsimpleton.wanandroid.databinding.FragmentAnswerBinding
 import com.vsimpleton.wanandroid.view.activity.WebActivity
-import com.vsimpleton.wanandroid.view.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

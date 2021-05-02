@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.view.adapter
+package com.vsimpleton.wanandroid.article
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.vsimpleton.wanandroid.base.BaseVBAdapter
 import com.vsimpleton.wanandroid.base.BaseVBViewHolder
-import com.vsimpleton.wanandroid.data.bean.Article
+import com.vsimpleton.wanandroid.bean.Article
 import com.vsimpleton.wanandroid.databinding.ItemArticleListBinding
 import com.vsimpleton.wanandroid.utils.dp2px
 

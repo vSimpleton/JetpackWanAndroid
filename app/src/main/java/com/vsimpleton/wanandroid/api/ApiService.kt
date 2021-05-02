@@ -1,9 +1,9 @@
 package com.vsimpleton.wanandroid.api
 
-import com.vsimpleton.wanandroid.data.bean.Article
-import com.vsimpleton.wanandroid.data.bean.ArticleBean
-import com.vsimpleton.wanandroid.data.bean.BannerBean
-import com.vsimpleton.wanandroid.data.bean.BaseModel
+import com.vsimpleton.wanandroid.bean.Article
+import com.vsimpleton.wanandroid.bean.ArticleBean
+import com.vsimpleton.wanandroid.bean.BannerBean
+import com.vsimpleton.wanandroid.bean.BaseModel
 import retrofit2.http.GET
 import retrofit2.http.Path
 

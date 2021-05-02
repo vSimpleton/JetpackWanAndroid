@@ -1,11 +1,11 @@
-package com.vsimpleton.wanandroid.data.repository
+package com.vsimpleton.wanandroid.article
 
 import com.vsimpleton.wanandroid.api.ApiService
 import com.vsimpleton.wanandroid.api.BASE_URL
-import com.vsimpleton.wanandroid.data.bean.Article
-import com.vsimpleton.wanandroid.data.bean.ArticleBean
-import com.vsimpleton.wanandroid.data.bean.BannerBean
-import com.vsimpleton.wanandroid.data.bean.BaseModel
+import com.vsimpleton.wanandroid.bean.Article
+import com.vsimpleton.wanandroid.bean.ArticleBean
+import com.vsimpleton.wanandroid.bean.BannerBean
+import com.vsimpleton.wanandroid.bean.BaseModel
 import com.vsimpleton.wanandroid.utils.createApiFactory
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -2,8 +2,8 @@ package com.vsimpleton.wanandroid.answer
 
 import com.vsimpleton.wanandroid.api.ApiService
 import com.vsimpleton.wanandroid.api.BASE_URL
-import com.vsimpleton.wanandroid.data.bean.ArticleBean
-import com.vsimpleton.wanandroid.data.bean.BaseModel
+import com.vsimpleton.wanandroid.bean.ArticleBean
+import com.vsimpleton.wanandroid.bean.BaseModel
 import com.vsimpleton.wanandroid.utils.createApiFactory
 import javax.inject.Inject
 

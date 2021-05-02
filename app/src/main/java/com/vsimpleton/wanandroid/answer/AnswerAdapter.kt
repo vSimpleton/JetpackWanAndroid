@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.vsimpleton.wanandroid.base.BaseVBAdapter
 import com.vsimpleton.wanandroid.base.BaseVBViewHolder
-import com.vsimpleton.wanandroid.data.bean.Article
+import com.vsimpleton.wanandroid.bean.Article
 import com.vsimpleton.wanandroid.databinding.ItemAnswerListBinding
 
 /**

@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.data.bean
+package com.vsimpleton.wanandroid.bean
 
 data class BaseModel<T>(
     val errorCode: Int = 0,

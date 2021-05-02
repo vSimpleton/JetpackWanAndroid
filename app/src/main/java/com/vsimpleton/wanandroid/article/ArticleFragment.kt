@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.view.fragment
+package com.vsimpleton.wanandroid.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.vsimpleton.wanandroid.R
 import com.vsimpleton.wanandroid.base.BaseFragment
-import com.vsimpleton.wanandroid.data.bean.Article
-import com.vsimpleton.wanandroid.data.bean.BannerBean
-import com.vsimpleton.wanandroid.data.viewmodel.ArticleViewModel
+import com.vsimpleton.wanandroid.bean.Article
+import com.vsimpleton.wanandroid.bean.BannerBean
 import com.vsimpleton.wanandroid.databinding.BannerArticleTopBinding
 import com.vsimpleton.wanandroid.databinding.FragmentArticleBinding
 import com.vsimpleton.wanandroid.utils.dp2px
 import com.vsimpleton.wanandroid.view.activity.WebActivity
-import com.vsimpleton.wanandroid.view.adapter.ArticleListAdapter
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
@@ -91,6 +88,9 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickList
                             size: Int
                         ) {
                             holder.imageView.load(data.imagePath)
+                            holder.imageView.setOnClickListener {
+                                WebActivity.start(requireActivity(), data.url)
+                            }
                         }
                     }
                     addBannerLifecycleObserver(requireActivity())
@@ -107,6 +107,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickList
             dp2px(220f)
         )
         mBannerBinding.root.layoutParams = params
+
         return mBannerBinding.root
     }
 
