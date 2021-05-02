@@ -28,7 +28,13 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ImmersionBar.with(this).titleBarMarginTop(mBinding.webView).statusBarDarkFont(true).init()
+
         initWebView()
+        initListener()
+    }
+
+    private fun initListener() {
+        mBinding.ivBack.setOnClickListener { finish() }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -41,13 +47,24 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
             javaScriptEnabled = true
             domStorageEnabled = true
             loadWithOverviewMode = true
+            useWideViewPort = true //将图片调整到适合webview的大小
+            loadWithOverviewMode = true // 缩放至屏幕的大小
+
+            setSupportZoom(true) //支持缩放，默认为true。是下面那个的前提。
+            builtInZoomControls = true //设置内置的缩放控件。若为false，则该WebView不可缩放
+            displayZoomControls = false //隐藏原生的缩放控件
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             }
         }
 
-        mBinding.webView.webChromeClient = WebChromeClient()
+        mBinding.webView.webChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                super.onProgressChanged(view, newProgress)
+                mBinding.pbPercent.progress = newProgress
+            }
+        }
         mBinding.webView.webViewClient = WebViewClient()
 
         mBinding.webView.setOnDrawListener(object : X5WebView.OnDrawListener {

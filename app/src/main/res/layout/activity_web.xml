@@ -14,4 +14,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bg_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="60dp"/>
+
+    <com.vsimpleton.wanandroid.view.widget.CircleProgressBar
+        android:id="@+id/pbPercent"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="@id/ivBack"
+        app:layout_constraintEnd_toEndOf="@id/ivBack"
+        app:layout_constraintTop_toTopOf="@id/ivBack"
+        app:layout_constraintBottom_toBottomOf="@id/ivBack"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
