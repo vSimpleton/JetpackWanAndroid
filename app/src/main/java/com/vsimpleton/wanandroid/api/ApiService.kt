@@ -18,4 +18,7 @@ interface ApiService {
     @GET(GET_BANNER)
     suspend fun getBanner(): BaseModel<MutableList<BannerBean>>
 
+    @GET(GET_ANSWER_LIST)
+    suspend fun getAnswerList(@Path("pageId") pageId: Int): BaseModel<ArticleBean>
+
 }

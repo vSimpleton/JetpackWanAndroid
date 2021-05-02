@@ -10,3 +10,6 @@ const val GET_ARTICLE_TOP = "article/top/json"
 
 // 首页banner
 const val GET_BANNER = "banner/json"
+
+// 问答
+const val GET_ANSWER_LIST = "wenda/list/{pageId}/json "

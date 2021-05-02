@@ -11,7 +11,7 @@ import com.vsimpleton.wanandroid.base.BaseActivity
 import com.vsimpleton.wanandroid.databinding.ActivityMainBinding
 import com.vsimpleton.wanandroid.databinding.LayoutMainTabBinding
 import com.vsimpleton.wanandroid.view.adapter.MainVpAdapter
-import com.vsimpleton.wanandroid.view.fragment.AnswerFragment
+import com.vsimpleton.wanandroid.answer.AnswerFragment
 import com.vsimpleton.wanandroid.view.fragment.ArticleFragment
 import com.vsimpleton.wanandroid.view.fragment.MineFragment
 import com.vsimpleton.wanandroid.view.fragment.TypeFragment
