@@ -1,9 +1,6 @@
 package com.vsimpleton.wanandroid.api
 
-import com.vsimpleton.wanandroid.bean.Article
-import com.vsimpleton.wanandroid.bean.ArticleBean
-import com.vsimpleton.wanandroid.bean.BannerBean
-import com.vsimpleton.wanandroid.bean.BaseModel
+import com.vsimpleton.wanandroid.bean.*
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -20,5 +17,11 @@ interface ApiService {
 
     @GET(GET_ANSWER_LIST)
     suspend fun getAnswerList(@Path("pageId") pageId: Int): BaseModel<ArticleBean>
+
+    @GET(GET_TREE_TYPE)
+    suspend fun getSystemTreeList(): BaseModel<MutableList<SystemTreeBean>>
+
+    @GET(GET_NAVIGATION_TYPE)
+    suspend fun getSystemNAVList(): BaseModel<MutableList<SystemNavBean>>
 
 }

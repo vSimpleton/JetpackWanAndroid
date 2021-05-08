@@ -14,7 +14,7 @@ import com.vsimpleton.wanandroid.view.adapter.MainVpAdapter
 import com.vsimpleton.wanandroid.answer.AnswerFragment
 import com.vsimpleton.wanandroid.article.ArticleFragment
 import com.vsimpleton.wanandroid.view.fragment.MineFragment
-import com.vsimpleton.wanandroid.view.fragment.TypeFragment
+import com.vsimpleton.wanandroid.tree.TypeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

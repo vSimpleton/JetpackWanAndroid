@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.view.fragment
+package com.vsimpleton.wanandroid.tree
 
 import android.os.Bundle
 import android.view.View
@@ -31,7 +31,7 @@ class TypeFragment : BaseFragment<FragmentTypeBinding>() {
 
         mBinding.viewPager.adapter = MainVpAdapter(
             requireActivity(),
-            listOf(SystemFragment.newInstance(), SystemFragment.newInstance())
+            listOf(SystemFragment.newInstance(PAGE_TREE), SystemFragment.newInstance(PAGE_NAVIGATION))
         )
 
         val mediator = TabLayoutMediator(
