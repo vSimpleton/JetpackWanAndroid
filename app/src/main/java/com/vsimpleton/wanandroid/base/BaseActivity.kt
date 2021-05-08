@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
-import com.vsimpleton.wanandroid.observer.ConcreteObservable
-import com.vsimpleton.wanandroid.observer.MessageEvent
-import com.vsimpleton.wanandroid.observer.Observer
+import com.vsimpleton.wanandroid.utils.observer.ConcreteObservable
+import com.vsimpleton.wanandroid.utils.observer.MessageEvent
+import com.vsimpleton.wanandroid.utils.observer.Observer
 import java.lang.reflect.ParameterizedType
 
 open class BaseActivity<VB : ViewBinding> : AppCompatActivity(), Observer {

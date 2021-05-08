@@ -4,13 +4,165 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MineFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/ivBgTop"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:background="@color/main_color"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/shape_f5f5f5_circle"
+        app:layout_constraintBottom_toTopOf="@id/tvLoginTips"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivBgTop"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvLoginTips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="登录"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintBottom_toBottomOf="@id/ivBgTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatar" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/_29a5a5a5"
+        app:layout_constraintTop_toBottomOf="@id/ivBgTop" />
+
+    <TextView
+        android:id="@+id/tvIntegral"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_integral"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="我的积分"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <TextView
+        android:id="@+id/tvShare"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_share"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="17dp"
+        android:paddingEnd="15dp"
+        android:text="我的分享"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIntegral" />
+
+    <TextView
+        android:id="@+id/tvCollection"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_collection"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="15dp"
+        android:text="我的收藏"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvShare" />
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_history"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="15dp"
+        android:text="阅读历史"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCollection" />
+
+    <TextView
+        android:id="@+id/tvOpenSource"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_github"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="开源项目"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHistory" />
+
+    <TextView
+        android:id="@+id/tvAboutAuthor"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_about"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="15dp"
+        android:text="关于作者"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvOpenSource" />
+
+    <TextView
+        android:id="@+id/tvSetting"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:drawableStart="@drawable/ic_setting"
+        android:drawableEnd="@drawable/ic_into"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="15dp"
+        android:text="系统设置"
+        android:textColor="@color/_333333"
+        android:textSize="@dimen/sp_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAboutAuthor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

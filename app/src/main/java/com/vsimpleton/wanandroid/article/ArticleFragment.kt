@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.gyf.immersionbar.ImmersionBar
 import com.vsimpleton.wanandroid.base.BaseFragment
 import com.vsimpleton.wanandroid.bean.Article
 import com.vsimpleton.wanandroid.bean.BannerBean
@@ -41,6 +42,8 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickList
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ImmersionBar.with(this).titleBarMarginTop(mBinding.titleBar.titleLayout)
+            .statusBarDarkFont(true).init()
 
         initTitleBar()
         initViewModel()
@@ -112,6 +115,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickList
     }
 
     private fun initRecyclerView() {
+        mAdapter.removeAllHeaderView()
         mAdapter.addHeaderView(initBannerView())
         val layoutManager = LinearLayoutManager(requireActivity())
         mBinding.rcyArticle.layoutManager = layoutManager
@@ -134,8 +138,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding>(), View.OnClickList
     override fun onClick(v: View) {
         when (v) {
             mBinding.titleBar.ivLeft -> {
+
             }
             mBinding.titleBar.ivRight -> {
+
             }
         }
     }

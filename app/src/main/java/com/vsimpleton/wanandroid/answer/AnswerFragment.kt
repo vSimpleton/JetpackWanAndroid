@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gyf.immersionbar.ImmersionBar
 import com.vsimpleton.wanandroid.base.BaseFragment
 import com.vsimpleton.wanandroid.bean.Article
 import com.vsimpleton.wanandroid.databinding.FragmentAnswerBinding
@@ -28,6 +29,7 @@ class AnswerFragment : BaseFragment<FragmentAnswerBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ImmersionBar.with(this).titleBarMarginTop(mBinding.titleBar.titleLayout).statusBarDarkFont(true).init()
 
         initTitleBar()
         initViewModel()

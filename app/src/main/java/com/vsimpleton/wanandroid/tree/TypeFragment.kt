@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.gyf.immersionbar.ImmersionBar
 import com.vsimpleton.wanandroid.R
 import com.vsimpleton.wanandroid.base.BaseFragment
 import com.vsimpleton.wanandroid.databinding.FragmentTypeBinding
@@ -21,6 +22,7 @@ class TypeFragment : BaseFragment<FragmentTypeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ImmersionBar.with(this).titleBarMarginTop(mBinding.tabLayout).statusBarDarkFont(true).init()
 
         initTabLayout()
     }

@@ -1,4 +1,4 @@
-package com.vsimpleton.wanandroid.observer
+package com.vsimpleton.wanandroid.utils.observer
 
 abstract class Observable {
 

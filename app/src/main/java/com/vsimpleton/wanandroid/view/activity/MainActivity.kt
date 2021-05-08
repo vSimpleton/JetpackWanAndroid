@@ -13,7 +13,7 @@ import com.vsimpleton.wanandroid.databinding.LayoutMainTabBinding
 import com.vsimpleton.wanandroid.view.adapter.MainVpAdapter
 import com.vsimpleton.wanandroid.answer.AnswerFragment
 import com.vsimpleton.wanandroid.article.ArticleFragment
-import com.vsimpleton.wanandroid.view.fragment.MineFragment
+import com.vsimpleton.wanandroid.mine.MineFragment
 import com.vsimpleton.wanandroid.tree.TypeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ImmersionBar.with(this).titleBarMarginTop(mBinding.viewPager).statusBarDarkFont(true).init()
+        ImmersionBar.with(this).statusBarDarkFont(true).init()
         initViewPager()
     }
 

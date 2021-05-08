@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.vsimpleton.wanandroid.observer.ConcreteObservable
-import com.vsimpleton.wanandroid.observer.MessageEvent
-import com.vsimpleton.wanandroid.observer.Observer
+import com.vsimpleton.wanandroid.utils.observer.ConcreteObservable
+import com.vsimpleton.wanandroid.utils.observer.MessageEvent
+import com.vsimpleton.wanandroid.utils.observer.Observer
 import java.lang.reflect.ParameterizedType
 
 open class BaseFragment<VB : ViewBinding> : Fragment(), Observer {
