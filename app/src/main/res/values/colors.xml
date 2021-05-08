@@ -18,4 +18,7 @@
     <color name="_333333">#333333</color>
 
     <color name="main_bg_color">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="_99FFFFFF">#99FFFFFF</color>
+
 </resources>
